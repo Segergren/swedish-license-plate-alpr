@@ -7,9 +7,7 @@ opencv_contrib_python==4.10.0.84
 opencv_python==4.7.0.72
 opencv_python_headless==4.10.0.84
 paddleocr==2.8.1
-paddleocr.egg==info
 paddlepaddle==2.6.1
-paddlepaddle_gpu==2.6.1.post117
 Requests==2.32.3
 scipy==1.14.1
 scikit-image==0.24.0
