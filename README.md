@@ -33,18 +33,23 @@ https://github.com/user-attachments/assets/77b3cdac-dc23-42e1-9b3f-44f0e5cd61ef
 1. Install python (3.7.0 to 3.10.15)
 2. Download and install [Cuda 11.7](https://developer.nvidia.com/cuda-11-7-0-download-archive)
 3. Install Torch
+   ##### Option 1 (GPU)
    ```bash
    pip3 install torch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1 --index-url https://download.pytorch.org/whl/test/cu118
    ```
-5. Install paddlepaddle-gpu:
+   ##### Option 2 (CPU)
+   ```bash
+   pip3 install torch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1 --index-url https://download.pytorch.org/whl/test/cpu
+   ```
+4. (If you selected **Option 1**) Install paddlepaddle-gpu:
    ```bash
    python -m pip install paddlepaddle-gpu==2.6.1.post117 -f https://www.paddlepaddle.org.cn/whl/windows/mkl/avx/stable.html
    ```
-6. Install dependencies:
+5. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
-7. Run the main script to process a video file:
+6. Run the main script to process a video file:
    ```bash
    python main.py
    ````
