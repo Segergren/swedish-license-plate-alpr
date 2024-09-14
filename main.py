@@ -1,5 +1,6 @@
 from ultralytics import YOLO
 import cv2
+import torch
 import numpy as np
 from deep_sort_realtime.deepsort_tracker import DeepSort
 from util import read_license_plate, LicensePlateDataFetcher, ocr_lock
@@ -12,11 +13,13 @@ logging.getLogger("ultralytics").setLevel(logging.ERROR)
 # Initialize the DeepSORT tracker
 tracker = DeepSort(max_age=30, n_init=3, nms_max_overlap=1.0)
 
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
+
 # Load the YOLO models
 coco_model = YOLO('yolov8n.pt')
-coco_model.to('cuda')
+coco_model.to(device)
 license_plate_detector = YOLO('license_plate_detector.pt')
-license_plate_detector.to('cuda')
+license_plate_detector.to(device)
 
 # Define the vehicle classes
 vehicles = [2, 3, 5, 7]  # car, motorcycle, bus, truck

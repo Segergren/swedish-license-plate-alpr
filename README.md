@@ -49,8 +49,7 @@ https://github.com/user-attachments/assets/77b3cdac-dc23-42e1-9b3f-44f0e5cd61ef
    ```bash
    pip install -r requirements.txt
    ```
-6. (If you selected **Option 2**) Remove `.to('cuda')` from `main.py`
-7. Run the main script to process a video file:
+6. Run the main script to process a video file:
    ```bash
    python main.py
    ````
