@@ -16,7 +16,7 @@ This project is designed to detect vehicles, recognize license plates, and track
 2. **Tracking**: The detected vehicles are tracked with unique IDs.
 3. **License Plate Detection**: The system detects license plates within the vehicle bounding boxes.
 4. **License Plate Recognition**: OCR is used to recognize and validate the text on license plates.
-5. **Data Fetching**: If a valid license plate is found, vehicle information is fetched from the biluppgifter.se website.
+5. **Data Fetching**: If a valid license plate is found, vehicle information and owner is fetched from Biluppgifter.se and Ratsit.
 
 ## Dependencies
 - `ultralytics`: For YOLO-based object detection.
@@ -26,21 +26,16 @@ This project is designed to detect vehicles, recognize license plates, and track
 - `requests` & `BeautifulSoup`: For scraping vehicle data from a website.
 
 ## Running the Project
-1. Install dependencies:
+
+1. Download and install [Cuda 11.7](https://developer.nvidia.com/cuda-11-7-0-download-archive)
+2. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
-2. Run the main script to process a video file:
+3. Run the main script to process a video file:
    ```bash
    python main.py
    ````
-
-## How it Works
-1. The YOLO model detects vehicles in the video feed.
-2. The detected vehicles are tracked with unique IDs.
-3. License plates are detected within the vehicle bounding boxes.
-4. OCR recognizes and validates the text on license plates.
-5. If a valid license plate is found, vehicle information is fetched from a biluppgifter.se and Ratsit.
 
 ## Files
 - main.py: Core logic for detecting, tracking, and recognizing vehicles and license plates.
