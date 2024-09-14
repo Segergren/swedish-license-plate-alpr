@@ -5,6 +5,10 @@ This project is designed to detect vehicles, recognize license plates, and track
 ![Screenshot 2024-09-14](https://github.com/user-attachments/assets/3f43d074-0f5a-4b8d-8731-71cc56edba1d)
 
 
+https://github.com/user-attachments/assets/77b3cdac-dc23-42e1-9b3f-44f0e5cd61ef
+
+
+
 ## Features
 - **Vehicle Detection**: Detects cars, motorcycles, buses, and trucks using the YOLOv8 model.
 - **License Plate Recognition**: Recognizes license plates using OCR and verifies Swedish license plates.
