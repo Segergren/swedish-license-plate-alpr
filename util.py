@@ -4,10 +4,11 @@ from paddleocr import PaddleOCR
 import re
 import threading
 import requests
+import torch
 from bs4 import BeautifulSoup
 
 # Initialize the OCR model
-ocr = PaddleOCR(use_angle_cls=True, lang="en", use_gpu=False)
+ocr = PaddleOCR(use_angle_cls=True, lang="en", use_gpu=torch.cuda.is_available())
 ocr_lock = threading.Lock()
 
 def is_valid_swedish_license_plate(license_plate_text):
@@ -20,7 +21,7 @@ def is_valid_swedish_license_plate(license_plate_text):
 def read_license_plate(license_plate_crop):
     # OCR
     with ocr_lock:
-        result = ocr.ocr(license_plate_crop, cls=True)
+        result = ocr.ocr(license_plate_crop, cls=False)
     if result:
         for detection_group in result:
             if not detection_group:
@@ -141,3 +142,14 @@ class LicensePlateDataFetcher:
                 self.license_plate_data_status[license_plate_text] = 'fetching'
                 threading.Thread(target=self.fetch_data, args=(license_plate_text,)).start()
                 return True
+# Preload and Warm-Up the OCR Model
+def warm_up_ocr():
+    """
+    Performs a dummy OCR call to initialize and warm-up the OCR model.
+    """
+    dummy_image = np.zeros((100, 300, 3), dtype=np.uint8)  # Black image
+    ocr.ocr(dummy_image, cls=False)
+    print("OCR Model warmed up.")
+
+# Call warm-up function during module initialization
+warm_up_ocr()

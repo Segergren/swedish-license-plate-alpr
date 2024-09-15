@@ -123,6 +123,7 @@ while ret:
             x1_lp, y1_lp, x2_lp, y2_lp, score_lp, class_id_lp = license_plate
             x1_lp, y1_lp, x2_lp, y2_lp = int(x1_lp), int(y1_lp), int(x2_lp), int(y2_lp)
             # Find the associated car for this license plate
+
             associated_track = None
             for track in outputs:
                 if not track.is_confirmed():
@@ -135,6 +136,7 @@ while ret:
                 if x1_lp >= x1_car and y1_lp >= y1_car and x2_lp <= x2_car and y2_lp <= y2_car:
                     associated_track = track
                     break
+
             if associated_track:
                 car_id = associated_track.track_id
                 with car_license_plates_lock:
